@@ -29,7 +29,7 @@ if __name__ == '__main__':
                     reward = -diff
             return reward
 
-    model = PolicyGradients()
+    model = PolicyGradients(inputdims=60, actiondims=2, layers=4, neurons=120)
     
     x = df1
     episodes = 50
@@ -46,7 +46,7 @@ if __name__ == '__main__':
             action = model.choose_action(state)
             resultbefore = x[i-1]
             resultnow = x[i]
-            reward = model.rewardfunction(action, resultbefore, resultnow)
+            reward = rewardfunction(action, resultbefore, resultnow)
             model.store_transition(state, action, reward)
             totalreward += reward
         model.learn(batch_train_mode)

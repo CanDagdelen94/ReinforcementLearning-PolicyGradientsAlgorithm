@@ -72,6 +72,3 @@ class PolicyGradients:
                     loss = self.customloss(actions[i], pred, reward_memory[i], batch_train)
                 grad = tape.gradient(loss, self.model.trainable_variables)
                 self.model.optimizer.apply_gradients(zip(grad, self.model.trainable_variables))
-
-if __name__  == "__main__":
-    model = PolicyGradients()
